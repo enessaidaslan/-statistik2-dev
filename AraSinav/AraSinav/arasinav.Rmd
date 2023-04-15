@@ -1,0 +1,64 @@
+---
+title: "Çevresel Sürdürülebilirliği Etkileyen Faktörlerin Makine Öğrenimi Modeli İle Analizi"
+author: 
+  - Enes Said Aslan[21080394]
+bibliography: ../bibliography/biblio.bib
+csl: ../csl/apa-tr.csl
+header-includes:
+  - \usepackage{polyglossia}
+  - \setmainlanguage{turkish}
+  - \usepackage{booktabs}
+  - \usepackage{caption} 
+  - \captionsetup[table]{skip=10pt}
+output:
+  bookdown::pdf_document2:
+    fig_caption: yes
+    fig_height: 3
+    fig_width: 4
+    keep_tex: no
+    latex_engine: xelatex
+    number_sections: yes
+    toc: no
+geometry: margin=1in
+link-citations: yes
+urlcolor: blue
+fontsize: 12pt
+biblio-style: apalike
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+<!-- ======================================================================= -->
+<!-- ============================== NOTLAR ================================= -->
+<!-- ======================================================================= -->
+[Github Repo](https://github.com/KULLANICI_ADINIZ/REPO_ADINIZ)
+
+# Giriş
+Dünya şu anda doğal kaynakların hızla tükendiği ve tükenen kaynakların telafisinin çok güçleştiği bir durumdadır. İnsan ve diğer canlıların yaşamını tehlikeye sokan bu durum, insanları çözüm önerileri getirmeye yöneltmiştir. Bu bağlamda ‘çevresel sürdürülebilirlik’ anlayışı yaygınlaştırılmaya çalışılmaktadır. Çevresel sürdürülebilirlik doğal kaynakların yerinde kullanılarak gelecek kuşaklara aktarılması ve devamlılığının sağlanmasıdır. Bu veri seti, çevresel sürdürülebiliriği etkileyen faktörlerden oluşan 14 değişken içerir. Bu değişkenlere ait 2020 yılından 53 farklı gözlem bulunmaktadır. Bu veri setinde aşağıdaki değişkenler bulunmaktadır;
+
+*  **Kömür tüketimi: Toplam nihai enerji tüketiminin yüzdesi olarak kömür tüketimi.** 
+*  **Kişi başına karbondioksit tüketim emisyonları: İnsan faaliyetlerinin bir sonucu olarak üretilen toplam karbondioksit emisyonları..**
+*  **Birim GSYİH başına karbondioksit emisyonları: Fosil yakıtların yakılması, gaz yakma ve çimento üretiminden kaynaklanan insan kaynaklı karbondioksit emisyonları, 2020 satın alma gücü paritesinde (SAGP) birim gayri safi yurtiçi hasıla (GSYİH) başına kilogram olarak ifade edilmiştir.**
+* **Yenilenebilir enerji tüketimi: Toplam nihai enerji tüketiminde yenilenebilir enerjinin payı. Hidroelektrik, jeotermal, güneş, rüzgar, biyokütle, biyoyakıtları gibi.**
+* **Solar fotovoltaik elektrik kapasitesi: Güneş fotovoltaikleri tarafından sağlanabilen, megavat cinsinden ifade edilen toplam elektrik kapasitesi.**
+* **Tatlı su çekimi: Toplam yenilenebilir su kaynaklarının yüzdesi olarak ifade edilen, çekilen toplam tatlı su.**
+* **Gübre besinlerinin kullanımı: Gübre besin maddelerinin toplam tarımsal kullanımı — azot (N) veya fosfor (P2O5 olarak ifade edilir), ekim alanı başına ifade edilir.**
+* **Kişi başına yerli malzeme tüketimi: Doğrudan malzeme ithalatı ve yurt içinde çıkarılan malzemelerin toplamı eksi doğrudan malzeme ihracatının toplamı.**
+* **Afetlere atfedilen ölüm ve kayıp kişilerin sayısı**
+* **Karasal korunan alanlar**
+* **Kırmızı Liste İndeksi: Tür grupları genelinde toplu yok olma riskinin ölçüsü. Uluslararası Doğayı Koruma Birliği Kırmızı Tehdit Altındaki Türler Listesi'ndeki her bir yok olma riski kategorisindeki tür sayısındaki gerçek değişikliklere dayanmaktadır. Nesli tükenmiş olarak sınıflandırılan tüm türler için 0 ile en az endişe verici olarak sınıflandırılan tüm türler için 1 arasında değişir.**
+
+## Çalışmanın Amacı
+Çevresel sürdürülebilirlik eldeki kaynakların en verimli şekilde kullanılması ve doğal kaynakların kendisini yenileyebilmesi için gerekli özverinin sağlanmasını hedefler. Bu çalışmada gelişmiş, gelişmekte olan ve gelişmemiş ülkelere göre sürdürülebilirliği etkileyen faktörler üzerinden analiz yapcağız. Dünyanın geleceği için, bir makine öğrenimi modelinin çok yardımcı olabileceği erken tespit ve yönetimden yararlanacağız.
+
+## Literatür 
+Sürdürülebilirlik kavramı çevre sorunlarının ortaya çıkması ile bu sorunların çözüme ulaştırılması amacıyla ortaya çıkmıştır. Bunun sonucunda da ulusal ve uluslararası ölçekte sürdürülebilir kalkınma benimsenmiştir. [@langston2008sustainable] Günümüzde sürdürülebilir kalkınma çevre koruma politikasının hem ulusal hem de uluslar arası ölçekte kabul görmüş ana kavramıdır diyebilmekteyiz. [@gedik2020sosyal] Bu kavram çevreye hasar vermeden ekonomik gelişmeyi hedefleyen bir süreç olarak tanımlanabilmektedir. Bu kavramın temelinde ekonomik büyümeyi doğanın taşıma kapasitesini aşmadan gerçekleştirme düşüncesi yatmaktadır. Bu kavram ekonomik gelişme ve büyüme ile meydana gelen çevre problemlerini hedef almaktadır. 
+Çevre problemlerinin giderek artması ve gün yüzüne çıkması, ekolojik dengenin bozunuma uğraması ve buna paralel sağlık sorunlarının artması, kalkınma yanında çevrenin de önemli olduğu sürdürülebilirlik ilkesini ortaya çıkarmış ve dünyanın sürekliliğinin ekosistemdeki her türlü canlının güvenliğini sağlamakla, kalkınma ve ekonomi arasındaki barış ve dengenin sağlanmasına borçlu olduğu görüşünü getirmiştir. [@karalar2011ccevresel] 
+Çevresel sürdürülebilirlik, doğal kaynakların sürekliliğinin sağlanması anlamına gelmektedir. Çevrenin sürdürülebilir kullanımı açısından yenilenebilir ve yenilenemeyen kaynakların kullanımı, kirlilik, atık asimilasyonu gibi faaliyetlerde çevresel sürdürebilirlik kavramı bir dizi kısıtlamalar getirmektedir. Kısıtlamalar doğal çevrenin sürdürülmesi amacını gütmektedir. [@kumar2015effective]
+İnsanoğlunun çevre ve kaynakları üzerindeki en önemli etkisi sürdürülebilir kullanım üzerinedir. Sürdürülebilirlik, çevre tahribatının sorun olarak algılanması sonucunda ortaya çıkan kavramdır ve bu sorunların çözüme kavuşturulması amacını taşımaktadır. Sürdürülebilirliğin ana koşulunu ise insan ve doğanın birbirinin karşıtı değil birbirinin tamamlayıcısı olduğu fikri teşkil etmektedir. Sürdürülebilirliğin özellikle üç boyutta etkisi çok büyüktür; ekonomik, sosyal ve çevresel boyut. Sürdürülebilir bir çevreye ulaşabilirsek; sürdürülebilir bir ekonomiye, sosyal yaşama da ulaşabilir, kalkınabiliriz. [@mentecse2017ccevresel]
+
+\newpage
+# Kaynakça {#references}
+<div id="refs"></div>
+
